@@ -1,5 +1,6 @@
 import { ref, watch } from 'vue';
 
+// Function poir chercher un element dans le local storage 
 export function useLocal(key, initialValue = {}) {
     let val = ref(getLocal(key) || initialValue);
 
@@ -10,10 +11,12 @@ export function useLocal(key, initialValue = {}) {
     return val;
 }
 
+// Function pour recuperer l'element dans le local storage (todo en l'occcurence)
 export function getLocal(key) {
     return JSON.parse(localStorage.getItem(key));
 }
 
+// Function pour ajouter un element dans le local storage (todo en l'occcurence)
 export function addToLocal(key, newItem) {
     let data = getLocal(key) || {};
     let maxId = Math.max(0, ...Object.keys(data).map(Number));

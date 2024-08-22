@@ -1,5 +1,47 @@
-# Vue 3 + Vite
+# FanPrime VueJS Technical Test (4 hours)
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+## Overview
 
-Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://vuejs.org/guide/scaling-up/tooling.html#ide-support).
+This project is a Vue 3 application for managing a list of tasks (Todo list). It's part of the technical test for a Frontend Developer position at FanPrime.
+
+## Features
+
+- Display a list of tasks
+- Add new tasks
+- Edit existing tasks
+- Delete tasks
+- Mark tasks as complete
+- Save tasks in local storage
+
+## Technologies Used
+
+- Vue 3
+- Vite
+- Composition API
+- SCSS for styling
+- Local Storage for data persistence
+
+## Installation
+
+1. Clone this repository
+2. Install dependencies:
+   ```
+   npm install
+   ```
+3. Run the development server:
+   ```
+   npm run dev
+   ```
+4. Open the application in your browser (the address will be shown in the terminal)
+
+## Project Structure
+
+### Home page with elements and Add/Edit/Remove features
+```
+/
+``` 
+
+### Filtered page with elements only
+```
+/checked
+``` 

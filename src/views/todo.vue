@@ -13,6 +13,7 @@ const swal = useSwal()
 //     return Object.entries(todos.value).map(([id, title]) => ({ id, title, checked }));
 // })
 
+// Ajoute les éléments dans le local storage sinon affiche un message d'erreur
 const addItemInTodo = () => {
     if (inputAdd.value.trim() !== '') {
         todos.value = addToLocal('todo', inputAdd.value)
