@@ -1,27 +1,28 @@
 import { ref, watch } from 'vue';
 
-export function useLocal(key, val) {
-    let localItem = readLocal();
+export function useLocal(key, initialValue = {}) {
+    let val = ref(getLocal(key) || initialValue);
 
-    let localValue = ref(localItem ?? val);
+    watch(val, () => {
+        localStorage.setItem(key, JSON.stringify(val.value));
+    }, { deep: true });
 
-    watch(localValue, addToLocal, { deep: true });
+    return val;
+}
 
-    function readLocal() {
-        return JSON.parse(localStorage.getItem(key));
+export function getLocal(key) {
+    return JSON.parse(localStorage.getItem(key));
+}
+
+export function addToLocal(key, newItem) {
+    let data = getLocal(key) || {};
+    let maxId = Math.max(0, ...Object.keys(data).map(Number));
+    let newId = maxId + 1;
+    if (typeof newItem !== 'object') {
+        newItem = { value: newItem };
     }
-
-    function addToLocal() {
-        localStorage.setItem(key, JSON.stringify(localValue.value));
-    }
-
-    if (val == null || val == '') {
-        return ref(localStorage.getItem(key));
-    }
-
-    return {
-        localValue,
-        readLocal,
-    };
-            
+    newItem.checked = false;
+    data[newId] = newItem;
+    localStorage.setItem(key, JSON.stringify(data));
+    return data;
 }

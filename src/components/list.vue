@@ -32,8 +32,6 @@ const props = defineProps({
 const filteredElements = computed(() => {
     if (Array.isArray(props.elements)) {
         return props.filtered ? props.elements.filter(element => element.checked) : props.elements
-    } else {
-        return props.elements
     }
 })
 </script>
@@ -46,7 +44,6 @@ ul {
 }
 
 ul > li {
-    display: flex;
     justify-content: space-between;
     align-items: center;
     padding:  10px 0px 10px 0px;

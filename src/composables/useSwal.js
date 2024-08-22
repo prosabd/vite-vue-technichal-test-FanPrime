@@ -1,8 +1,8 @@
-import swal from 'sweetalert2'
+import Swal from 'sweetalert2'
 
 export function useSwal() {
   const fire = (title, text, icon) => {
-    swal.fire({
+    Swal.fire({
       title,
       text,
       icon,

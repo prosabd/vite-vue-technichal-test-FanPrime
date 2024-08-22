@@ -1,21 +1,30 @@
 <script setup>
 import ListVue from "../components/List.vue"
-import { ref } from 'vue'
-import { useLocal } from '../composables/useLocal'
+import { ref, computed } from 'vue'
+import { getLocal, addToLocal } from '../composables/useLocal'
 import { useSwal } from '../composables/useSwal'
 
-let todos = useLocal('todo') ?? []
-let inputAdd = ref('')
+const todos = getLocal('todo') ?? {}
+const inputAdd = ref('')
+
+const swal = useSwal()
+
+// const todosArray = computed(() => {
+//     return Object.entries(todos.value).map(([id, title]) => ({ id, title, checked }));
+// })
 
 const addItemInTodo = () => {
-    if (inputAdd.value !== '' && inputAdd.value !== null) {
-        useLocal('todo', inputAdd.value)
+    if (inputAdd.value.trim() !== '') {
+        todos.value = addToLocal('todo', inputAdd.value)
         inputAdd.value = ''
     } else {
-        useSwal('warning', 'Please enter a todo')
+        swal.fire({
+            title: 'Warning',
+            text: 'Please enter a todo',
+            icon: 'warning'
+        })
     }
 }
-
 </script>
 
 <template>
@@ -23,7 +32,7 @@ const addItemInTodo = () => {
         <h1> FanPrime Todo App </h1>
         <div class="card">
             <input type="text" placeholder="Add a new todo" v-model="inputAdd"/>
-            <ListVue filtered=false elements=todos />
+            <ListVue filtered=false :elements=todos />
             <button @click="addItemInTodo"> Add todo </button>
         </div>
     </div>
