@@ -1,5 +1,5 @@
-import Todo from '../views/todo.vue'
-import TodoChecked from '../views/todoChecked.vue'
+import Todo from '../views/Todo.vue'
+import TodoChecked from '../views/TodoChecked.vue'
 
 const routes = [
     {

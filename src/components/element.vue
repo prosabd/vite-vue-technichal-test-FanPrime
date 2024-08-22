@@ -6,7 +6,7 @@
 </template>
 
 <script setup>
-import { ref, watch } from 'vue'
+import { ref, watch, computed } from 'vue'
 
 const props = defineProps({
   id: Number,
@@ -14,7 +14,7 @@ const props = defineProps({
   checked: Boolean
 })
 
-checkItem(computed => {
+const checkItem = computed (()=> {
     return props.checked
 })
 
